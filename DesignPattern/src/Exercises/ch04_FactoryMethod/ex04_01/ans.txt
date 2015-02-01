@@ -1,0 +1,2 @@
+パッケージの外からアクセスできない
+Exercises.ch04_FactoryMethod.ex04_02

@@ -1,0 +1,1 @@
+publicからprotectedに変更する
