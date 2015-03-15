@@ -1,24 +1,28 @@
-package Sample.AbstractFactory.Sample;
+package Exercises.ch08_AbstractFactory.ex08_02;
+import Exercises.ch08_AbstractFactory.ex08_02.factory.Factory;
+import Exercises.ch08_AbstractFactory.ex08_02.factory.Link;
+import Exercises.ch08_AbstractFactory.ex08_02.factory.Page;
+import Exercises.ch08_AbstractFactory.ex08_02.factory.Tray;
 
 public class Main {
     public static void main(String[] args) {
         if (args.length != 1) {
             System.out.println("Usage: java Main class.name.of.ConcreteFactory");
-            System.out.println("Example 1: java Main listfactory.ListFactory");
-            System.out.println("Example 2: java Main tablefactory.TableFactory");
+            System.out.println("Example 1: java Main Exercises.ch08_AbstractFactory.ex08_02.ListFactory.ListFactory");
+            System.out.println("Example 2: java Main Exercises.ch08_AbstractFactory.ex08_02.TableFactory.TableFactory");
             System.exit(0);
         }
         Factory factory = Factory.getFactory(args[0]);
 
-        Link asahi = factory.createLink("’©“úV•·", "http://www.asahi.com/");
-        Link yomiuri = factory.createLink("“Ç”„V•·", "http://www.yomiuri.co.jp/");
+        Link asahi = factory.createLink("æœæ—¥æ–°è", "http://www.asahi.com/");
+        Link yomiuri = factory.createLink("èª­å£²æ–°è", "http://www.yomiuri.co.jp/");
 
         Link us_yahoo = factory.createLink("Yahoo!", "http://www.yahoo.com/");
         Link jp_yahoo = factory.createLink("Yahoo!Japan", "http://www.yahoo.co.jp/");
         Link excite = factory.createLink("Excite", "http://www.excite.com/");
         Link google = factory.createLink("Google", "http://www.google.com/");
 
-        Tray traynews = factory.createTray("V•·");
+        Tray traynews = factory.createTray("æ–°è");
         traynews.add(asahi);
         traynews.add(yomiuri);
 
@@ -26,14 +30,12 @@ public class Main {
         trayyahoo.add(us_yahoo);
         trayyahoo.add(jp_yahoo);
 
-        Tray traysearch = factory.createTray("ƒT[ƒ`ƒGƒ“ƒWƒ“");
+        Tray traysearch = factory.createTray("ã‚µãƒ¼ãƒã‚¨ãƒ³ã‚¸ãƒ³");
         traysearch.add(trayyahoo);
         traysearch.add(excite);
         traysearch.add(google);
 
-        Page page = factory.createPage("LinkPage", "Œ‹é _");
-        page.add(traynews);
-        page.add(traysearch);
+        Page page = factory.createYahooPage();
         page.output();
     }
 }
